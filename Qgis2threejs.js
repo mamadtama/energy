@@ -4,6 +4,19 @@
 
 "use strict";
 
+//load grid_area data
+
+var data_grid = function getdata(){
+   fetch('data/index/grid_area.json', { 
+	    method: "GET", // GET, POST, PUT, DELETE, etc.
+	    mode: "cors", // cors, no-cors, same-origin
+	})
+	.then((response) => response.json())
+        .then((json) => return json)
+  }();
+console.log(data_grid);
+
+
 var Q3D = {
 
 	VERSION: "2.7.3",
@@ -184,18 +197,7 @@ Q3D.E = function (id) {
 };
 
 
-//load grid_area data
 
-var data_grid = function getdata(){
-   fetch('data/index/grid_area.json', { 
-	    method: "GET", // GET, POST, PUT, DELETE, etc.
-	    mode: "cors", // cors, no-cors, same-origin
-	})
-	.then((response) => response.json())
-        .then((json) => return json)
-  }();
-
-console.log(data_grid);
 
 (function () {
 
