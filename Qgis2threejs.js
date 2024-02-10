@@ -1714,6 +1714,53 @@ console.log(retrieved_data);
 					e.innerHTML = Q3D.Utils.convertToDMS(lonLat[1], lonLat[0]) + ", Elev. " + pt.z.toFixed(2);
 				}
 				else {
+					proj4.defs([
+						  [
+						    'EPSG:4326',
+						    '+title=WGS 84 (long/lat) +proj=longlat +ellps=WGS84 +datum=WGS84 +units=degrees'],
+						  [
+						    'EPSG:5171',
+						    PROJCRS["Tokyo 1892 / Korea East Belt",
+							    BASEGEOGCRS["Tokyo 1892",
+							        DATUM["Tokyo 1892",
+							            ELLIPSOID["Bessel 1841",6377397.155,299.1528128,
+							                LENGTHUNIT["metre",1]]],
+							        PRIMEM["Greenwich",0,
+							            ANGLEUNIT["degree",0.0174532925199433]],
+							        ID["EPSG",5132]],
+							    CONVERSION["Korea East Belt",
+							        METHOD["Transverse Mercator",
+							            ID["EPSG",9807]],
+							        PARAMETER["Latitude of natural origin",38,
+							            ANGLEUNIT["degree",0.0174532925199433],
+							            ID["EPSG",8801]],
+							        PARAMETER["Longitude of natural origin",129,
+							            ANGLEUNIT["degree",0.0174532925199433],
+							            ID["EPSG",8802]],
+							        PARAMETER["Scale factor at natural origin",1,
+							            SCALEUNIT["unity",1],
+							            ID["EPSG",8805]],
+							        PARAMETER["False easting",200000,
+							            LENGTHUNIT["metre",1],
+							            ID["EPSG",8806]],
+							        PARAMETER["False northing",500000,
+							            LENGTHUNIT["metre",1],
+							            ID["EPSG",8807]]],
+							    CS[Cartesian,2],
+							        AXIS["northing (X)",north,
+							            ORDER[1],
+							            LENGTHUNIT["metre",1]],
+							        AXIS["easting (Y)",east,
+							            ORDER[2],
+							            LENGTHUNIT["metre",1]],
+							    USAGE[
+							        SCOPE["Cadastre, engineering survey, topographic mapping (large and medium scale)."],
+							        AREA["Democratic People's Republic of Korea (North Korea) and Republic of Korea (South Korea) - onshore between 128°E and 130°E."],
+							        BBOX[34.49,128,43.01,130]],
+							    ID["EPSG",5171]]
+						  ]
+						]);
+					
 					var new_xy = proj4("EPSG:5171","EPSG:4326", [pt.x,pt.y]);
 					console.log(new_xy);
 					e.innerHTML = [pt.x.toFixed(2), pt.y.toFixed(2), pt.z.toFixed(2)].join(", ");
