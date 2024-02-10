@@ -1693,11 +1693,11 @@ console.log(retrieved_data);
 		var y1 = app.scene.toMapCoordinates({"x": x,"y": y,"z": 250}).y;
 		var da = retrieved_data[featureId];
 		
-		if (layer && e) e.innerHTML = 'House: '+(da["House_PCT"]*100).toString()
-			                      +' % \n Park :'+(da["Park_PCT"]*100).toString()
-			                      +' % \n Gov. Building :'+(da["Govern_PCT"]*100).toString()
-			                      +' % \n Comm. Building :'+(da["Commerc_PC"]*100).toString();
-			                      +' % \n Factory :'+(da["Factory__1"]*100).toString();   
+		if (layer && e) e.innerHTML = 'House: '+(da["House_PCT"]*100).toFixed(2).toString()
+			                      +' % <br> Park :'+(da["Park_PCT"]*100).toFixed(2).toString()
+			                      +' % <br> Gov. Building :'+(da["Govern_PCT"]*100).toFixed(2).toString()
+			                      +' % <br> Comm. Building :'+(da["Commerc_PC"]*100).toFixed(2).toString();
+			                      +' % <br> Factory :'+(da["Factory__1"]*100).toFixed(2).toString()+' %';   
 		
 		// clicked coordinates
 		e = E("qr_coords_table");
