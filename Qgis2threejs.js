@@ -185,7 +185,7 @@ Q3D.E = function (id) {
 
 
 //load grid_area data
-
+/*
 var data_grid = function getdata(){
    fetch('data/index/grid_area.json', { 
 	    method: "GET", // GET, POST, PUT, DELETE, etc.
@@ -195,6 +195,22 @@ var data_grid = function getdata(){
         .then((json) => {return json}) 
   }();
 console.log(data_grid);
+*/
+var retrieved_data = function getdata(){
+    var tmp=null;
+    $.ajax({           
+        type: "GET",
+        async: false,
+        dataType: "json",
+        url: "data/index/grid_area.json",
+        success: function (data) {
+          tmp=data;
+        }
+      })
+    return tmp;
+  }();
+
+console.log(retrieved_data);
 
 (function () {
 
