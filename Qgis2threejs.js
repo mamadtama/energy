@@ -1714,13 +1714,7 @@ console.log(retrieved_data);
 					e.innerHTML = Q3D.Utils.convertToDMS(lonLat[1], lonLat[0]) + ", Elev. " + pt.z.toFixed(2);
 				}
 				else {
-					proj4.defs([
-						  [
-						    'EPSG:4326',
-						    '+title=WGS 84 (long/lat) +proj=longlat +ellps=WGS84 +datum=WGS84 +units=degrees'],
-						  [
-						    'EPSG:5171',
-						    PROJCRS["Tokyo 1892 / Korea East Belt",
+						  firstProjection ='PROJCRS["Tokyo 1892 / Korea East Belt",
 							    BASEGEOGCRS["Tokyo 1892",
 							        DATUM["Tokyo 1892",
 							            ELLIPSOID["Bessel 1841",6377397.155,299.1528128,
@@ -1752,14 +1746,7 @@ console.log(retrieved_data);
 							            LENGTHUNIT["metre",1]],
 							        AXIS["easting (Y)",east,
 							            ORDER[2],
-							            LENGTHUNIT["metre",1]],
-							    USAGE[
-							        SCOPE["Cadastre, engineering survey, topographic mapping (large and medium scale)."],
-							        AREA["Democratic People's Republic of Korea (North Korea) and Republic of Korea (South Korea) - onshore between 128°E and 130°E."],
-							        BBOX[34.49,128,43.01,130]],
-							    ID["EPSG",5171]]
-						  ]
-						]);
+							            LENGTHUNIT["metre",1]]'
 					
 					var new_xy = proj4("EPSG:5171","EPSG:4326", [pt.x,pt.y]);
 					console.log(new_xy);
