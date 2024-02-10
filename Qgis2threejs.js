@@ -12,7 +12,12 @@ var Q3D = {
 
 };
 
-
+fetch('data/index/grid_area.json', { 
+    method: "GET", // GET, POST, PUT, DELETE, etc.
+    mode: "cors", // cors, no-cors, same-origin
+})
+	.then((response) => response.json())
+    .then((json) => console.log(json));
 
 Q3D.Config = {
 
@@ -185,6 +190,24 @@ Q3D.E = function (id) {
 	return document.getElementById(id);
 };
 
+
+//load grid_area data
+
+var data_grid = function getdata(){
+    var tmp=null;
+    $.ajax({           
+        type: "GET",
+        async: false,
+        dataType: "json",
+        url: "data/index/grid_area.json",
+        success: function (data) {
+          tmp=data;
+        }
+      })
+    return tmp;
+  }();
+
+console.log(data_grid);
 
 (function () {
 
