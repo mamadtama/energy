@@ -193,18 +193,6 @@ var data_grid = function getdata(){
 	})
 	.then((response) => response.json())
         .then((json) => return json)
-/*	
-    var tmp=null;
-    $.ajax({           
-        type: "GET",
-        async: false,
-        dataType: "json",
-        url: "data/index/grid_area.json",
-        success: function (data) {
-          tmp=data;
-        }
-      })
-    return tmp;*/
   }();
 
 console.log(data_grid);
