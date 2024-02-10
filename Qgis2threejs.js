@@ -1696,7 +1696,7 @@ console.log(retrieved_data);
 		if (layer && e) e.innerHTML = 'House: '+(da["House_PCT"]*100).toFixed(2).toString()
 			                      +' % <br> Park :'+(da["Park_PCT"]*100).toFixed(2).toString()
 			                      +' % <br> Gov. Building :'+(da["Govern_PCT"]*100).toFixed(2).toString()
-			                      +' % <br> Comm. Building :'+(da["Commerc_PC"]*100).toFixed(2).toString();
+			                      +' % <br> Comm. Building :'+(da["Commerc_PC"]*100).toFixed(2).toString()
 			                      +' % <br> Factory :'+(da["Factory__1"]*100).toFixed(2).toString()+' %';   
 		
 		// clicked coordinates
