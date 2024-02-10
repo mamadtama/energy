@@ -185,17 +185,6 @@ Q3D.E = function (id) {
 
 
 //load grid_area data
-/*
-var data_grid = function getdata(){
-   fetch('data/index/grid_area.json', { 
-	    method: "GET", // GET, POST, PUT, DELETE, etc.
-	    mode: "cors", // cors, no-cors, same-origin
-	})
-	.then((response) => response.json())
-        .then((json) => {return json}) 
-  }();
-console.log(data_grid);
-*/
 var retrieved_data = function getdata(){
     var tmp=null;
     $.ajax({           
@@ -1700,13 +1689,12 @@ console.log(retrieved_data);
 		var e = E("qr_layername");
 		var x = layer.features[featureId].geom.centroids[0][0];
 		var y = layer.features[featureId].geom.centroids[0][1];
-		var x1 = app.scene.toMapCoordinates({"x": x,"y": y,"z": 250}).x
-		var y1 = app.scene.toMapCoordinates({"x": x,"y": y,"z": 250}).y
-
-
-
-		if (layer && e) e.innerHTML = x1+','+y1; //console.log(layer.features[featureId].geom) //app.scene.toMapCoordinates("x": -2712.8807244307914,"y": -3244.9686202930607,"z": 250.00000000000182});
-
+		var x1 = app.scene.toMapCoordinates({"x": x,"y": y,"z": 250}).x;
+		var y1 = app.scene.toMapCoordinates({"x": x,"y": y,"z": 250}).y;
+		var da = retrieved_data[featureId];
+		
+		if (layer && e) e.innerHTML = 'Park :'+(da["Park_PCT"]*100).toString()+' %';  
+		
 		// clicked coordinates
 		e = E("qr_coords_table");
 		if (e) {
