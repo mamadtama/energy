@@ -12,6 +12,13 @@ var Q3D = {
 
 };
 
+fetch('data/index/grid_area.json', { 
+    method: "GET", // GET, POST, PUT, DELETE, etc.
+    mode: "cors", // cors, no-cors, same-origin
+})
+	.then((response) => response.json())
+    .then((json) => console.log(json));
+
 Q3D.Config = {
 
 	// renderer
@@ -1212,7 +1219,7 @@ Q3D.E = function (id) {
 		var canvasOffset = app._offset(app.renderer.domElement);
 		var objs = app.intersectObjects(e.clientX - canvasOffset.left, e.clientY - canvasOffset.top);
 
-		var obj, o, layer, layerId;
+		var obj, o, layer, layerId, featureIdx;
 		for (var i = 0, l = objs.length; i < l; i++) {
 			obj = objs[i];
 
@@ -1224,7 +1231,10 @@ Q3D.E = function (id) {
 			// get layerId of clicked object
 			o = obj.object;
 			while (o) {
+				//console.log(o.userData.featureIdx);
 				layerId = o.userData.layerId;
+				featureIdx = o.userData.featureIdx;
+				console.log(layerId,featureIdx);
 				if (layerId !== undefined) break;
 				o = o.parent;
 			}
@@ -1247,7 +1257,7 @@ Q3D.E = function (id) {
 
 			app.highlightFeature(o);
 			app.render();
-			gui.showQueryResult(obj.point, layer, o, conf.coord.visible);
+			gui.showQueryResult(obj.point, layer, featureIdx, o, conf.coord.visible);
 
 			return;
 		}
@@ -1664,10 +1674,17 @@ Q3D.E = function (id) {
 		gui.popup.show("pageinfo");
 	};
 
-	gui.showQueryResult = function (point, layer, obj, show_coords) {
+	gui.showQueryResult = function (point, layer, featureId, obj, show_coords) {
 		// layer name
 		var e = E("qr_layername");
-		if (layer && e) e.innerHTML = layer.properties.name;
+		var x = layer.features[featureId].geom.centroids[0][0];
+		var y = layer.features[featureId].geom.centroids[0][1];
+		var x1 = app.scene.toMapCoordinates({"x": x,"y": y,"z": 250}).x
+		var y1 = app.scene.toMapCoordinates({"x": x,"y": y,"z": 250}).y
+
+
+
+		if (layer && e) e.innerHTML = x1+','+y1; //console.log(layer.features[featureId].geom) //app.scene.toMapCoordinates("x": -2712.8807244307914,"y": -3244.9686202930607,"z": 250.00000000000182});
 
 		// clicked coordinates
 		e = E("qr_coords_table");
