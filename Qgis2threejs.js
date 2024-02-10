@@ -1714,7 +1714,7 @@ console.log(retrieved_data);
 					e.innerHTML = Q3D.Utils.convertToDMS(lonLat[1], lonLat[0]) + ", Elev. " + pt.z.toFixed(2);
 				}
 				else {
-					var new_xy = proj4("EPSG:4326", [pt.x,pt.y]);
+					var new_xy = proj4("EPSG:5171","EPSG:4326", [pt.x,pt.y]);
 					console.log(new_xy);
 					e.innerHTML = [pt.x.toFixed(2), pt.y.toFixed(2), pt.z.toFixed(2)].join(", ");
 				}
