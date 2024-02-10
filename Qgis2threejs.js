@@ -1714,8 +1714,10 @@ console.log(retrieved_data);
 					e.innerHTML = Q3D.Utils.convertToDMS(lonLat[1], lonLat[0]) + ", Elev. " + pt.z.toFixed(2);
 				}
 				else {
-					var firstProjection ='PROJCRS["Tokyo 1892 / Korea East Belt",BASEGEOGCRS["Tokyo 1892",DATUM["Tokyo 1892",ELLIPSOID["Bessel 1841",6377397.155,299.1528128,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]]'
-					var new_xy = proj4(firstProjection,"EPSG:4326", [pt.x,pt.y]);
+					proj4.defs("EPSG:4326", "+proj=longlat +datum=WGS84 +no_defs");
+					proj4.defs("EPSG:5171", "+proj=tmerc +lat_0=38 +lon_0=129 +k=1 +x_0=200000 +y_0=500000 +ellps=bessel +units=m +no_defs");
+					//var firstProjection =';
+					var new_xy = proj4("EPSG:5171","EPSG:4326", [pt.x,pt.y]);
 					console.log(new_xy);
 					e.innerHTML = [pt.x.toFixed(2), pt.y.toFixed(2), pt.z.toFixed(2)].join(", ");
 				}
