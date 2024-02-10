@@ -17,9 +17,7 @@ fetch('data/index/grid_area.json', {
     mode: "cors", // cors, no-cors, same-origin
 })
     .then((response) => response.json())
-    .then((json) => console.log(json));
-console.log(json);
-
+    .then((json) => console.log(json[0]));
 
 Q3D.Config = {
 
