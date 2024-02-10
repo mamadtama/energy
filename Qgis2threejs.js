@@ -1719,7 +1719,7 @@ console.log(retrieved_data);
 					//var firstProjection =';
 					var new_xy = proj4("EPSG:5171","EPSG:4326", [pt.x,pt.y]);
 					console.log(new_xy);
-					e.innerHTML = [pt.x.toFixed(2), pt.y.toFixed(2), pt.z.toFixed(2)].join(", ");
+					e.innerHTML = [new_xy[0].toFixed(3), new_xy[1].toFixed(3), pt.z.toFixed(0)].join(", ");
 				}
 
 				if (conf.debugMode) {
