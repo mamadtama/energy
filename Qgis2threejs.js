@@ -1506,7 +1506,7 @@ var retrieved_data = function getdata(){
 
 			start: function() {
 				this.isActive = true;
-			}
+			},
 			
 			clear: function () {
 				if (!this.isActive) return;
@@ -1531,7 +1531,7 @@ var retrieved_data = function getdata(){
 
 				gui.popupforecast.show(html, "Forecast of Energy Demand");
 			}
-		};
+		}
 	})();
 
 
