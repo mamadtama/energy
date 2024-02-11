@@ -1530,7 +1530,7 @@ var retrieved_data = function getdata(){
 				html += "<tr><td>Vertical difference:</td><td>" + ' m</td><td><span class="tooltip tooltip-btn" data-tooltip="elevation difference between start point and end point">?</span></td></tr>';
 				html += "</table>";
     				*/
-
+				var html = '';
 				gui.popupforecast.show(html, "Forecast of Energy Demand");
 			}
 		}
@@ -1731,7 +1731,7 @@ var retrieved_data = function getdata(){
 		},
 
 		show: function (obj, title, modal, duration) {
-
+			/*
 			if (modal) app.pause();
 			else if (this.modal) app.resume();
 
@@ -1760,8 +1760,11 @@ var retrieved_data = function getdata(){
 				content.classList.add(VIS);
 			}
 			E("popupbar").innerHTML = title || "";
+   			*/
+			
 			E("popup_forecast").classList.add(VIS);
 
+			/*
 			if (this.timerId !== null) {
 				clearTimeout(this.timerId);
 				this.timerId = null;
@@ -1771,7 +1774,7 @@ var retrieved_data = function getdata(){
 				this.timerId = setTimeout(function () {
 					gui.popup_forecast.hide();
 				}, duration);
-			}
+			} */
 		},
 
 		hide: function () {
