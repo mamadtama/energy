@@ -1501,6 +1501,39 @@ console.log(retrieved_data);
 	})();
 
 
+	(function () {
+
+		app.forecast = {
+
+			isActive: false,
+			
+			clear: function () {
+				if (!this.isActive) return;
+
+				this.markerGroup.clear();
+				this.lineGroup.clear();
+
+				app.scene.remove(this.markerGroup);
+				app.scene.remove(this.lineGroup);
+
+				path = [];
+				this.isActive = false;
+			},
+
+			showResult: function () {
+
+				var html = '<table class="forecast">';
+				html += "<tr><td>Total distance:</td><td>" + " m</td><td></td></tr>";
+				html += "<tr><td>Horizontal distance:</td><td>" + " m</td><td></td></tr>";
+				html += "<tr><td>Vertical difference:</td><td>" + ' m</td><td><span class="tooltip tooltip-btn" data-tooltip="elevation difference between start point and end point">?</span></td></tr>';
+				html += "</table>";
+
+				gui.popupforecast.show(html, "Forecast of Energy Demand");
+			}
+		};
+	})();
+
+
 	/*
 	Q3D.gui
 	*/
@@ -1584,6 +1617,9 @@ console.log(retrieved_data);
 		});
 		ON_CLICK("measurebtn", function () {
 			app.measure.start();
+		});
+		ON_CLICK("forecastbtn", function () {
+			app.forecast.start();
 		});
 
 		// narrative box
@@ -1677,6 +1713,74 @@ console.log(retrieved_data);
 		}
 
 	};
+
+	gui.popupforecast = {
+
+		modal: false,
+
+		content: null,
+
+		timerId: null,
+
+		isVisible: function () {
+			return E("popup_forecast").classList.contains(VIS);
+		},
+
+		show: function (obj, title, modal, duration) {
+
+			if (modal) app.pause();
+			else if (this.modal) app.resume();
+
+			this.content = obj;
+			this.modal = Boolean(modal);
+
+			var e = E("layerpanel");
+			if (e) e.classList.remove(VIS);
+
+			var content = E("popupcontent");
+			[content, E("queryresult"), E("pageinfo")].forEach(function (e) {
+				if (e) e.classList.remove(VIS);
+			});
+
+			if (obj == "queryresult" || obj == "pageinfo") {
+				E(obj).classList.add(VIS);
+			}
+			else {
+				if (obj instanceof HTMLElement) {
+					content.innerHTML = "";
+					content.appendChild(obj);
+				}
+				else {
+					content.innerHTML = obj;
+				}
+				content.classList.add(VIS);
+			}
+			E("popupbar").innerHTML = title || "";
+			E("popup_forecast").classList.add(VIS);
+
+			if (this.timerId !== null) {
+				clearTimeout(this.timerId);
+				this.timerId = null;
+			}
+
+			if (duration) {
+				this.timerId = setTimeout(function () {
+					gui.popup_forecast.hide();
+				}, duration);
+			}
+		},
+
+		hide: function () {
+			E("popup_forecast").classList.remove(VIS);
+			if (this.timerId !== null) clearTimeout(this.timerId);
+			this.timerId = null;
+			this.content = null;
+			if (this.modal) app.resume();
+		}
+
+	};
+
+	
 
 	gui.showInfo = function () {
 		var e = E("urlbox");
