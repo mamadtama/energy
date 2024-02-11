@@ -1506,6 +1506,10 @@ console.log(retrieved_data);
 		app.forecast = {
 
 			isActive: false,
+
+			start: function() {
+				this.isActive = true;
+			}
 			
 			clear: function () {
 				if (!this.isActive) return;
