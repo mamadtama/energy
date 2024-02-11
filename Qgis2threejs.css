@@ -208,6 +208,19 @@ body {
   cursor: pointer;
 }
 
+#closebtn_f {
+  color: #ccc;
+  padding: 2px;
+  line-height: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  float: right;
+  cursor: pointer;
+}
+
 #closebtn:hover {
   background-color: #eee;
 }
