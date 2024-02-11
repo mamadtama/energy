@@ -1620,7 +1620,7 @@ var retrieved_data = function getdata(){
 			app.measure.start();
 		});
 		ON_CLICK("forecastbtn", function () {
-			app.forecast.start();
+			app.forecast.showResult();
 			console.log('forecast!');
 		});
 
