@@ -1607,7 +1607,7 @@ var retrieved_data = function getdata(){
 
 		// popup
 		ON_CLICK("closebtn", app.cleanView);
-		ON_CLICK("closebtn_f", gui.cleanView_f);
+		ON_CLICK("closebtn_f", app.cleanView_f);
 		ON_CLICK("zoomtolayer", function () {
 			app.cameraAction.zoomToLayer(app.selectedLayer);
 		});
