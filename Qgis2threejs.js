@@ -1523,12 +1523,13 @@ var retrieved_data = function getdata(){
 
 			showResult: function () {
 				console.log('show modal of forecast');
-
+				/*
 				var html = '<table class="forecast">';
 				html += "<tr><td>Total distance:</td><td>" + " m</td><td></td></tr>";
 				html += "<tr><td>Horizontal distance:</td><td>" + " m</td><td></td></tr>";
 				html += "<tr><td>Vertical difference:</td><td>" + ' m</td><td><span class="tooltip tooltip-btn" data-tooltip="elevation difference between start point and end point">?</span></td></tr>';
 				html += "</table>";
+    				*/
 
 				gui.popupforecast.show(html, "Forecast of Energy Demand");
 			}
