@@ -1511,14 +1511,6 @@ var retrieved_data = function getdata(){
 			
 			clear: function () {
 				if (!this.isActive) return;
-
-				this.markerGroup.clear();
-				this.lineGroup.clear();
-
-				app.scene.remove(this.markerGroup);
-				app.scene.remove(this.lineGroup);
-
-				path = [];
 				this.isActive = false;
 			},
 
