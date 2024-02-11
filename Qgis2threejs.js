@@ -1602,7 +1602,7 @@ var retrieved_data = function getdata(){
 
 		// popup
 		ON_CLICK("closebtn", app.cleanView);
-		ON_CLICK("closebtn_f", gui.popupforecast.hide());
+		ON_CLICK("closebtn_f", gui.clean());
 		ON_CLICK("zoomtolayer", function () {
 			app.cameraAction.zoomToLayer(app.selectedLayer);
 		});
