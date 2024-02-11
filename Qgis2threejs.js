@@ -1731,6 +1731,7 @@ var retrieved_data = function getdata(){
 		},
 
 		hide: function () {
+			console.log('forecast hidden');
 			E("popup_forecast").classList.remove(VIS);
 			if (this.timerId !== null) clearTimeout(this.timerId);
 			this.timerId = null;
