@@ -1190,7 +1190,7 @@ var retrieved_data = function getdata(){
 
 	app.cleanView_f = function () {
 		gui.popupforecast.hide();
-		app.forecast.clear();
+		if (gui.layerPanel.initialized) gui.layerPanel.hide();
 	};
 
 	app.highlightFeature = function (object) {
