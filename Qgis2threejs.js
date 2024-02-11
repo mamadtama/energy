@@ -1621,6 +1621,7 @@ var retrieved_data = function getdata(){
 		});
 		ON_CLICK("forecastbtn", function () {
 			app.forecast.start();
+			console.log('forecast!');
 		});
 
 		// narrative box
