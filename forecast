@@ -1177,6 +1177,7 @@ var retrieved_data = function getdata(){
 		app.scene.remove(app.queryMarker);
 		app.highlightFeature(null);
 		app.measure.clear();
+		app.forecast.clear();
 		app.render();
 
 		app.selectedLayer = null;
