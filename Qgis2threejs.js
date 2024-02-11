@@ -1522,6 +1522,7 @@ var retrieved_data = function getdata(){
 			},
 
 			showResult: function () {
+				console.log('show modal of forecast');
 
 				var html = '<table class="forecast">';
 				html += "<tr><td>Total distance:</td><td>" + " m</td><td></td></tr>";
