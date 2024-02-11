@@ -236,6 +236,15 @@ body {
   display: none;
 }
 
+#popupbody caption {
+  background-color: gray;
+  color: white;
+  font-size: small;
+  padding: 1px 1px 1px 6px;
+  text-align: left;
+  vertical-align: bottom;
+}
+
 #popupbody table {
   margin: 4px 0px;
   width: 100%;
