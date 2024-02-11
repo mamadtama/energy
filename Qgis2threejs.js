@@ -1638,6 +1638,8 @@ var retrieved_data = function getdata(){
 
 	gui.clean = function () {
 		gui.popup.hide();
+		gui.popupforecast.hide();
+		
 		if (gui.layerPanel.initialized) gui.layerPanel.hide();
 	};
 
@@ -1724,50 +1726,7 @@ var retrieved_data = function getdata(){
 		},
 
 		show: function (obj, title, modal, duration) {
-			/*
-			if (modal) app.pause();
-			else if (this.modal) app.resume();
-
-			this.content = obj;
-			this.modal = Boolean(modal);
-
-			var e = E("layerpanel");
-			if (e) e.classList.remove(VIS);
-
-			var content = E("popupcontent");
-			[content, E("queryresult"), E("pageinfo")].forEach(function (e) {
-				if (e) e.classList.remove(VIS);
-			});
-
-			if (obj == "queryresult" || obj == "pageinfo") {
-				E(obj).classList.add(VIS);
-			}
-			else {
-				if (obj instanceof HTMLElement) {
-					content.innerHTML = "";
-					content.appendChild(obj);
-				}
-				else {
-					content.innerHTML = obj;
-				}
-				content.classList.add(VIS);
-			}
-			E("popupbar").innerHTML = title || "";
-   			*/
-			
 			E("popup_forecast").classList.add(VIS);
-
-			/*
-			if (this.timerId !== null) {
-				clearTimeout(this.timerId);
-				this.timerId = null;
-			}
-
-			if (duration) {
-				this.timerId = setTimeout(function () {
-					gui.popup_forecast.hide();
-				}, duration);
-			} */
 		},
 
 		hide: function () {
