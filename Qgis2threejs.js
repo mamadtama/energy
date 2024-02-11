@@ -199,7 +199,6 @@ var retrieved_data = function getdata(){
     return tmp;
   }();
 
-console.log(retrieved_data);
 
 (function () {
 
@@ -1241,10 +1240,8 @@ console.log(retrieved_data);
 			// get layerId of clicked object
 			o = obj.object;
 			while (o) {
-				//console.log(o.userData.featureIdx);
 				layerId = o.userData.layerId;
 				featureIdx = o.userData.featureIdx;
-				console.log(layerId,featureIdx);
 				if (layerId !== undefined) break;
 				o = o.parent;
 			}
@@ -1826,7 +1823,6 @@ console.log(retrieved_data);
 					proj4.defs("EPSG:5171", "+proj=tmerc +lat_0=38 +lon_0=129 +k=1 +x_0=200000 +y_0=500000 +ellps=bessel +units=m +no_defs");
 					//var firstProjection =';
 					var new_xy = proj4("EPSG:5171","EPSG:4326", [pt.x,pt.y]);
-					console.log(new_xy);
 					e.innerHTML = [new_xy[0].toFixed(3), new_xy[1].toFixed(3), pt.z.toFixed(0)].join(", ");
 				}
 
