@@ -4171,6 +4171,7 @@ class Q3DPolygonLayer extends Q3DVectorLayer {
 				// extruded geometry
 				var geom = new THREE.ExtrudeBufferGeometry(shape, {bevelEnabled: false, depth: f.geom.h});
 				var mesh = new THREE.Mesh(geom, materials.mtl(f.mtl.face));
+				var z = 0;
 				mesh.position.z = z;
 
 				if (f.mtl.edge !== undefined) {
